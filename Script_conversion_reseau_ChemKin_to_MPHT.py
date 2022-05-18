@@ -14,6 +14,8 @@ import os
 
 main_dir_name = os.path.dirname(__file__)
 read_uncertainties = True
+add_excited_states_decay = True
+add_excited_states_two_bodies_reactions = True
 
 """FILE PARAMETERS"""
 
@@ -697,3 +699,16 @@ with open(os.path.join(writing_dir_path, "reaction_2_Corps_rev.dat"), 'w')      
                    reaction.products)
 
         file.write(line + "\n")
+
+    files_to_add_dir_path = os.path.join(uncertainties_dir_path, "Files_to_add")
+    if add_excited_states_decay:
+        with open(os.path.join(files_to_add_dir_path, "reaction_2_Corps_rev.dat"), 'r') \
+        as excited_states_two_bodies_reactions_file:
+            for line in excited_states_two_bodies_reactions_file.readlines():
+                two_bodies_rev_file.write(line)
+
+    if add_excited_states_two_bodies_reactions:
+        with open(os.path.join(files_to_add_dir_path, "desexcitation_rev.dat"), 'r') \
+        as excited_states_decay_file:
+            for line in excited_states_decay_file.readlines():
+                decay_file.write(line)
