@@ -5,4 +5,4 @@
 *.inp
 *.therm
 *.pro
-!Old_Chemical_Network_With_Uncertainties/*
+!Old_Chemical_Network_With_Uncertainties/**
